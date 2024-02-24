@@ -1,0 +1,9 @@
+{
+	"name": "tejatuniki",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "595c179f-ef06-4451-83a0-2c84f4e00420",
+		"tenantId": "a222d689-cc3a-41f1-a4ec-c190d9509605"
+	}
+}
