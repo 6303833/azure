@@ -13,10 +13,18 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "filename",
-					"value": ""
+					"value": {
+						"value": "@pipeline().parameters.fname",
+						"type": "Expression"
+					}
 				}
 			}
 		],
+		"parameters": {
+			"fname": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"filename": {
 				"type": "String"
