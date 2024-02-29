@@ -14,6 +14,9 @@
 		"SqlServer1_connectionString": {
 			"value": ""
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
 		"trigger1_properties_pipeline2_parameters_fname": {
 			"value": "@triggerBody.fileName"
 		},
@@ -26,7 +29,16 @@
 		"storageevent_properties_pipeline3_parameters_source": {
 			"value": "@triggerBody().fileName"
 		},
+		"storageevent_properties_Push_to_SQL_parameters_fname": {
+			"value": "@triggerBody().fileName"
+		},
 		"storageevent_properties_typeProperties_scope": {
+			"value": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
+		},
+		"deltrig_properties_Push_to_SQL_parameters_fname": {
+			"value": "@triggerBody().fileName"
+		},
+		"deltrig_properties_typeProperties_scope": {
 			"value": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
 		},
 		"containerUri": {

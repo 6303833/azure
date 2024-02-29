@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SqlServer1'"
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
 		"trigger1_properties_pipeline2_parameters_fname": {
 			"type": "string",
 			"defaultValue": "@triggerBody.fileName"
@@ -35,7 +39,19 @@
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
+		"storageevent_properties_Push_to_SQL_parameters_fname": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
 		"storageevent_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
+		},
+		"deltrig_properties_Push_to_SQL_parameters_fname": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"deltrig_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
 		},
@@ -72,6 +88,9 @@
 					"AzureBlobStorage2_connectionString": {
 						"value": "[parameters('AzureBlobStorage2_connectionString')]"
 					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
 					"SqlServer1_connectionString": {
 						"value": "[parameters('SqlServer1_connectionString')]"
 					},
@@ -81,14 +100,23 @@
 					"trigger1_properties_typeProperties_scope": {
 						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
 					},
+					"trigger2_properties_typeProperties_scope": {
+						"value": "[parameters('trigger2_properties_typeProperties_scope')]"
+					},
 					"storageevent_properties_pipeline3_parameters_source": {
 						"value": "[parameters('storageevent_properties_pipeline3_parameters_source')]"
+					},
+					"storageevent_properties_Push_to_SQL_parameters_fname": {
+						"value": "[parameters('storageevent_properties_Push_to_SQL_parameters_fname')]"
 					},
 					"storageevent_properties_typeProperties_scope": {
 						"value": "[parameters('storageevent_properties_typeProperties_scope')]"
 					},
-					"trigger2_properties_typeProperties_scope": {
-						"value": "[parameters('trigger2_properties_typeProperties_scope')]"
+					"deltrig_properties_Push_to_SQL_parameters_fname": {
+						"value": "[parameters('deltrig_properties_Push_to_SQL_parameters_fname')]"
+					},
+					"deltrig_properties_typeProperties_scope": {
+						"value": "[parameters('deltrig_properties_typeProperties_scope')]"
 					}
 				}
 			},
