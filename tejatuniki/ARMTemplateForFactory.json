@@ -76,10 +76,24 @@
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"source1": {},
+									"source1": {
+										"fname": {
+											"value": "@pipeline().parameters.source",
+											"type": "Expression"
+										}
+									},
 									"sink1": {}
 								},
-								"linkedServiceParameters": {}
+								"linkedServiceParameters": {
+									"source1": {
+										"schemaLinkedService": {
+											"fname": {
+												"value": "@pipeline().parameters.source",
+												"type": "Expression"
+											}
+										}
+									}
+								}
 							},
 							"staging": {},
 							"compute": {
@@ -92,6 +106,11 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"source": {
+						"type": "string"
+					}
 				},
 				"annotations": []
 			},
@@ -403,12 +422,20 @@
 					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"fname": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "industry.csv",
+						"fileName": {
+							"value": "@dataset().fname",
+							"type": "Expression"
+						},
 						"container": "input"
 					},
 					"columnDelimiter": ",",
