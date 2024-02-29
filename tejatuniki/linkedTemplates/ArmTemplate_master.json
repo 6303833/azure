@@ -31,6 +31,14 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
 		},
+		"storageevent_properties_pipeline3_parameters_source": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"storageevent_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -72,6 +80,12 @@
 					},
 					"trigger1_properties_typeProperties_scope": {
 						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
+					},
+					"storageevent_properties_pipeline3_parameters_source": {
+						"value": "[parameters('storageevent_properties_pipeline3_parameters_source')]"
+					},
+					"storageevent_properties_typeProperties_scope": {
+						"value": "[parameters('storageevent_properties_typeProperties_scope')]"
 					},
 					"trigger2_properties_typeProperties_scope": {
 						"value": "[parameters('trigger2_properties_typeProperties_scope')]"
