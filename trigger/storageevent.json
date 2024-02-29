@@ -17,9 +17,6 @@
 				"pipelineReference": {
 					"referenceName": "Push_to_SQL",
 					"type": "PipelineReference"
-				},
-				"parameters": {
-					"fname": "@triggerBody().fileName"
 				}
 			}
 		],

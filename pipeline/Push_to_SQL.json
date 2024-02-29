@@ -17,15 +17,7 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "dataflow1",
-						"type": "DataFlowReference",
-						"datasetParameters": {
-							"source1": {
-								"input_file": {
-									"value": "@pipeline().parameters.fname",
-									"type": "Expression"
-								}
-							}
-						}
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,
@@ -35,11 +27,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"fname": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
