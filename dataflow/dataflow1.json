@@ -31,11 +31,9 @@
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
-				"     updateable:false,",
+				"     updateable:true,",
 				"     upsertable:false,",
 				"     format: 'table',",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
 				"     saveOrder: 1,",
 				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
