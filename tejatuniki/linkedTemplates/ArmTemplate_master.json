@@ -31,6 +31,10 @@
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
+		"storageevent_properties_Push_to_SQL_parameters_source": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
 		"storageevent_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
@@ -97,6 +101,9 @@
 					},
 					"storageevent_properties_pipeline3_parameters_source": {
 						"value": "[parameters('storageevent_properties_pipeline3_parameters_source')]"
+					},
+					"storageevent_properties_Push_to_SQL_parameters_source": {
+						"value": "[parameters('storageevent_properties_Push_to_SQL_parameters_source')]"
 					},
 					"storageevent_properties_typeProperties_scope": {
 						"value": "[parameters('storageevent_properties_typeProperties_scope')]"
