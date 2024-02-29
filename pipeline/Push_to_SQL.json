@@ -27,6 +27,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"source": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
