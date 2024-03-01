@@ -33,6 +33,7 @@
 				"     insertable:true,",
 				"     updateable:false,",
 				"     upsertable:false,",
+				"     recreate:true,",
 				"     format: 'table',",
 				"     saveOrder: 1,",
 				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
