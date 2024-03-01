@@ -16,10 +16,6 @@
 				"name": "Status",
 				"type": "varchar"
 			}
-		],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": "manipulate"
-		}
+		]
 	}
 }
