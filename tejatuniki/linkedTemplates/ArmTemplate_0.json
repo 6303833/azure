@@ -649,16 +649,6 @@
 										}
 									},
 									"sink1": {}
-								},
-								"linkedServiceParameters": {
-									"source1": {
-										"schemaLinkedService": {
-											"fname": {
-												"value": "@pipeline().parameters.source",
-												"type": "Expression"
-											}
-										}
-									}
 								}
 							},
 							"staging": {},
