@@ -24,6 +24,12 @@
 									"value": "@pipeline().parameters.source",
 									"type": "Expression"
 								}
+							},
+							"sink1": {
+								"name": {
+									"value": "@pipeline().parameters.source",
+									"type": "Expression"
+								}
 							}
 						}
 					},
