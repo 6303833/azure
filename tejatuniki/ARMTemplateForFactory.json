@@ -98,7 +98,12 @@
 											"type": "Expression"
 										}
 									},
-									"sink1": {}
+									"sink1": {
+										"name": {
+											"value": "@pipeline().parameters.source",
+											"type": "Expression"
+										}
+									}
 								}
 							},
 							"staging": {},
@@ -325,12 +330,20 @@
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"name": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "AzureSqlTable",
 				"schema": [],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "industries"
+					"table": {
+						"value": "@dataset().name",
+						"type": "Expression"
+					}
 				}
 			},
 			"dependsOn": [
