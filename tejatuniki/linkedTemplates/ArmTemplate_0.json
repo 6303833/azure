@@ -606,7 +606,9 @@
 						"     insertable:true,",
 						"     updateable:false,",
 						"     upsertable:false,",
+						"     recreate:true,",
 						"     format: 'table',",
+						"     preSQLs:['create table variable()'],",
 						"     saveOrder: 1,",
 						"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 					]
