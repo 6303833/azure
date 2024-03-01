@@ -9,6 +9,16 @@
 					"referenceName": "Push_to_SQL",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline2",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fname": "@triggerBody().fileName",
+					"status": "File Deleted"
+				}
 			}
 		],
 		"type": "BlobEventsTrigger",
