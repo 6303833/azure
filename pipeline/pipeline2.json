@@ -38,6 +38,19 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[DO_UPDATE]",
+					"storedProcedureParameters": {
+						"name": {
+							"value": "",
+							"type": "String"
+						},
+						"status": {
+							"value": "",
+							"type": "String"
+						}
+					}
+				},
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference"
