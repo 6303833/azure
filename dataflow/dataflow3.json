@@ -29,8 +29,8 @@
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 pivot(groupBy(departmentId),",
 				"     pivotBy(gender),",
-				"     count = count(employeeId),",
-				"     columnNaming: '$N$V',",
+				"     {} = count(employeeId),",
+				"     columnNaming: 'Count_$N$V_Gender',",
 				"     lateral: true) ~> pivot1"
 			]
 		}
