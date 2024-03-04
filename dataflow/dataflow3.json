@@ -42,8 +42,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source2",
-				"source1, source2 exists(departmentId == ERROR_FUNCTION(''),",
-				"     negate:false,",
+				"source1, source2 exists(employeeId == empId,",
+				"     negate:true,",
 				"     broadcast: 'auto')~> exists1"
 			]
 		}
