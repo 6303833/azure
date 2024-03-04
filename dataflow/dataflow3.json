@@ -27,7 +27,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 pivot(columnNaming: '$N$V',",
+				"source1 pivot(groupBy(departmentId),",
+				"     pivotBy(gender),",
+				"     columnNaming: '$N$V',",
 				"     lateral: true) ~> pivot1"
 			]
 		}
