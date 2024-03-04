@@ -22,7 +22,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "exists1"
+					"name": "lookup1"
 				}
 			],
 			"scriptLines": [
@@ -42,9 +42,10 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source2",
-				"source1, source2 exists(employeeId == empId,",
-				"     negate:true,",
-				"     broadcast: 'auto')~> exists1"
+				"source1, source2 lookup(employeeId == empId,",
+				"     multiple: false,",
+				"     pickup: 'any',",
+				"     broadcast: 'auto')~> lookup1"
 			]
 		}
 	}
