@@ -83,6 +83,16 @@
 									"type": "DatasetReference"
 								}
 							]
+						},
+						{
+							"name": "Set variable2",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": []
 						}
 					],
 					"timeout": "0.12:00:00"
@@ -95,6 +105,10 @@
 				"defaultValue": false
 			},
 			"counter": {
+				"type": "Integer",
+				"defaultValue": 0
+			},
+			"tempc": {
 				"type": "Integer",
 				"defaultValue": 0
 			}
