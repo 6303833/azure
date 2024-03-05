@@ -26,7 +26,8 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     validationMode: 'none',",
-				"     namespaces: true) ~> source1",
+				"     namespaces: true,",
+				"     partitionBy('hash', 1)) ~> source1",
 				"source1 foldDown(unroll(BroadcastYears.Season, BroadcastYears.Season),",
 				"     skipDuplicateMapInputs: false,",
 				"     skipDuplicateMapOutputs: false) ~> flatten1"
