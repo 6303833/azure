@@ -15,10 +15,13 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Super Store Sales_Monthly Data_2021.xlsx",
+				"fileName": "Relationship.xlsx",
 				"container": "input"
 			},
-			"sheetIndex": 0,
+			"sheetIndex": {
+				"value": "@dataset().sheetindex",
+				"type": "Expression"
+			},
 			"firstRowAsHeader": true
 		},
 		"schema": []
