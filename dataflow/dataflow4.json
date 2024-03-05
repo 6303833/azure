@@ -19,11 +19,15 @@
 				}
 			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          BroadcastYears as (Season as (NielsenEndDate as date, NielsenStartDate as date, STBSEndDate as date, STBSStartDate as date, Years as string)[])",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     validationMode: 'none',",
 				"     namespaces: true,",
+				"     dateFormats: ['MM/dd/yyyy'],",
 				"     partitionBy('hash', 1)) ~> source1",
 				"source1 foldDown(unroll(BroadcastYears.Season),",
 				"     mapColumn(",
