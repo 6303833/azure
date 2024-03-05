@@ -25,7 +25,7 @@
 							"typeProperties": {
 								"variableName": "tempc",
 								"value": {
-									"value": "@variables('counter')",
+									"value": "@add(variables('counter'),1)",
 									"type": "Expression"
 								}
 							}
@@ -104,10 +104,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "counter",
-								"value": {
-									"value": "@add(variables('tempc'),1)",
-									"type": "Expression"
-								}
+								"value": ""
 							}
 						},
 						{
