@@ -97,7 +97,13 @@
 							"outputs": [
 								{
 									"referenceName": "AzureSqlTable1",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"tbname": {
+											"value": "@table_variables('counter')",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						},
@@ -136,7 +142,10 @@
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "error",
-								"value": ""
+								"value": {
+									"value": "@bool(1)",
+									"type": "Expression"
+								}
 							}
 						}
 					],
