@@ -60,7 +60,8 @@
 				"ModifyColumns2 keyGenerate(output(BroadcastID as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
-				"ModifyColumns1 derive(Years = substring(Years,0,5)) ~> ModifyColumns2"
+				"ModifyColumns1 derive(Years = substring(Years,0,5),",
+				"          SourceFile_name = ERROR_FUNCTION('')) ~> ModifyColumns2"
 			]
 		}
 	}
