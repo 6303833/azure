@@ -5,6 +5,11 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"sheetindex": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
@@ -13,7 +18,10 @@
 				"fileName": "Super Store Sales_Monthly Data_2021.xlsx",
 				"container": "input"
 			},
-			"sheetIndex": 0,
+			"sheetIndex": {
+				"value": "@dataset().sheetindex",
+				"type": "Expression"
+			},
 			"firstRowAsHeader": true
 		},
 		"schema": []
