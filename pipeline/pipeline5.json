@@ -92,7 +92,11 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": []
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "counter",
+								"value": ""
+							}
 						}
 					],
 					"timeout": "0.12:00:00"
