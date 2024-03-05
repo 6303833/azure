@@ -33,7 +33,14 @@
 						{
 							"name": "Copy data1",
 							"type": "Copy",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "set_temp",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,
@@ -96,7 +103,14 @@
 						{
 							"name": "set_counter",
 							"type": "SetVariable",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Copy data1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"policy": {
 								"secureOutput": false,
 								"secureInput": false
@@ -104,7 +118,10 @@
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "counter",
-								"value": ""
+								"value": {
+									"value": "@variables('tempc')",
+									"type": "Expression"
+								}
 							}
 						},
 						{
