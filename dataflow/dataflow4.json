@@ -27,7 +27,7 @@
 				"     ignoreNoFilesFound: false,",
 				"     validationMode: 'none',",
 				"     namespaces: true) ~> source1",
-				"source1 foldDown(unroll(, BroadcastYears.Season),",
+				"source1 foldDown(unroll(BroadcastYears.Season),",
 				"     skipDuplicateMapInputs: false,",
 				"     skipDuplicateMapOutputs: false) ~> flatten1"
 			]
