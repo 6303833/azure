@@ -100,7 +100,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tbname": {
-											"value": "@table_variables('counter')",
+											"value": "table_@{variables('counter')}",
 											"type": "Expression"
 										}
 									}
