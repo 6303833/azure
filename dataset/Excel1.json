@@ -7,7 +7,7 @@
 		},
 		"parameters": {
 			"sheetindex": {
-				"type": "string"
+				"type": "int"
 			}
 		},
 		"annotations": [],
