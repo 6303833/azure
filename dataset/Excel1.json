@@ -18,10 +18,7 @@
 				"fileName": "Super Store Sales_Monthly Data_2021.xlsx",
 				"container": "input"
 			},
-			"sheetIndex": {
-				"value": "@dataset().sheetindex",
-				"type": "Expression"
-			},
+			"sheetIndex": 0,
 			"firstRowAsHeader": true
 		},
 		"schema": []
