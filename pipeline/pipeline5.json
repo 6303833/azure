@@ -75,6 +75,16 @@
 				}
 			}
 		],
+		"variables": {
+			"error": {
+				"type": "Boolean",
+				"defaultValue": false
+			},
+			"counter": {
+				"type": "Integer",
+				"defaultValue": 0
+			}
+		},
 		"annotations": []
 	}
 }
