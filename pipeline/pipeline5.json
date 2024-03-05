@@ -14,16 +14,9 @@
 					},
 					"activities": [
 						{
-							"name": "Set variable1",
+							"name": "set_temp",
 							"type": "SetVariable",
-							"dependsOn": [
-								{
-									"activity": "Set variable2",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"secureOutput": false,
 								"secureInput": false
@@ -40,14 +33,7 @@
 						{
 							"name": "Copy data1",
 							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "Set variable1",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,
@@ -108,7 +94,7 @@
 							]
 						},
 						{
-							"name": "Set variable2",
+							"name": "set_counter",
 							"type": "SetVariable",
 							"dependsOn": [],
 							"policy": {
