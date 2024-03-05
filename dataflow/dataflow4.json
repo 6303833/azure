@@ -19,10 +19,7 @@
 				}
 			],
 			"scriptLines": [
-				"source(output(",
-				"          BroadcastYears as (Season as (NielsenEndDate as date, NielsenStartDate as date, STBSEndDate as date, STBSStartDate as date, Years as string)[])",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     validationMode: 'none',",
@@ -30,8 +27,8 @@
 				"     partitionBy('hash', 1)) ~> source1",
 				"source1 foldDown(unroll(BroadcastYears.Season),",
 				"     mapColumn(",
-				"          Nielsen_StartDate = BroadcastYears.Season.NielsenStartDate,",
 				"          Years = BroadcastYears.Season.Years,",
+				"          Nielsen_StartDate = BroadcastYears.Season.NielsenStartDate,",
 				"          Nielsen_EndDate = BroadcastYears.Season.NielsenEndDate,",
 				"          Financial_StartDate = BroadcastYears.Season.STBSStartDate,",
 				"          Financial_EndDate = BroadcastYears.Season.STBSEndDate",
