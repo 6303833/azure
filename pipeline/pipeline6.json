@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "dataflow4",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"filename": "BroadcastYears"
+						}
 					},
 					"compute": {
 						"coreCount": 8,
