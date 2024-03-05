@@ -133,7 +133,11 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": []
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "error",
+								"value": ""
+							}
 						}
 					],
 					"timeout": "0.12:00:00"
