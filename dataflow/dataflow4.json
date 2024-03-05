@@ -28,7 +28,7 @@
 				"     validationMode: 'none',",
 				"     namespaces: true,",
 				"     partitionBy('hash', 1)) ~> source1",
-				"source1 foldDown(unroll(BroadcastYears.Season, BroadcastYears.Season),",
+				"source1 foldDown(unroll(BroadcastYears.Season),",
 				"     skipDuplicateMapInputs: false,",
 				"     skipDuplicateMapOutputs: false) ~> flatten1"
 			]
