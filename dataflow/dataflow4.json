@@ -29,6 +29,12 @@
 				"     namespaces: true,",
 				"     partitionBy('hash', 1)) ~> source1",
 				"source1 foldDown(unroll(BroadcastYears.Season),",
+				"     mapColumn(",
+				"          NielsenEndDate = BroadcastYears.Season.NielsenEndDate,",
+				"          NielsenStartDate = BroadcastYears.Season.NielsenStartDate,",
+				"          STBSEndDate = BroadcastYears.Season.STBSEndDate,",
+				"          STBSStartDate = BroadcastYears.Season.STBSStartDate",
+				"     ),",
 				"     skipDuplicateMapInputs: false,",
 				"     skipDuplicateMapOutputs: false) ~> flatten1"
 			]
