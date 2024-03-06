@@ -38,9 +38,6 @@
 				}
 			],
 			"scriptLines": [
-				"parameters{",
-				"     filename as string (BroadcastYears)",
-				"}",
 				"source(output(",
 				"          BroadcastYears as (Season as (NielsenEndDate as date, NielsenStartDate as date, STBSEndDate as date, STBSStartDate as date, Years as string)[])",
 				"     ),",
