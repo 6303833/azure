@@ -494,11 +494,6 @@
 								"datasetParameters": {
 									"source1": {},
 									"sink1": {}
-								},
-								"linkedServiceParameters": {
-									"sink1": {
-										"schemaLinkedService": {}
-									}
 								}
 							},
 							"staging": {},
@@ -540,6 +535,7 @@
 							],
 							"storeSettings": {
 								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
 								"enablePartitionDiscovery": false
 							}
 						}
@@ -617,9 +613,7 @@
 							{
 								"referenceName": "DelimitedText6",
 								"type": "DatasetReference",
-								"parameters": {
-									"fname": "temp"
-								}
+								"parameters": {}
 							}
 						],
 						"outputs": [
@@ -1003,21 +997,12 @@
 					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
-				"parameters": {
-					"fname": {
-						"type": "string",
-						"defaultValue": "temp"
-					}
-				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": {
-							"value": "@dataset().fname",
-							"type": "Expression"
-						},
+						"fileName": "temp.csv",
 						"container": "output"
 					},
 					"columnDelimiter": ",",
@@ -1586,7 +1571,7 @@
 						"ModifyColumns1 derive(Years = substring(Years,0,5)) ~> ModifyColumns2",
 						"surrogateKey1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
-						"     partitionFileNames:['temp'],",
+						"     partitionFileNames:['temp.csv'],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
 						"     mapColumn(",
