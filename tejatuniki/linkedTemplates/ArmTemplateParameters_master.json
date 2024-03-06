@@ -17,6 +17,15 @@
 		"SqlServer1_connectionString": {
 			"value": ""
 		},
+		"Update trigger_properties_pipeline6_parameters_filename": {
+			"value": "@triggerBody().fileName"
+		},
+		"Update trigger_properties_pipeline6_parameters_changesDate": {
+			"value": "@pipeline().TriggerTime"
+		},
+		"Update trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
+		},
 		"deltrig_properties_pipeline2_parameters_fname": {
 			"value": "@triggerBody().fileName"
 		},

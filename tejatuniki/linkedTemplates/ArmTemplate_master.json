@@ -23,6 +23,18 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SqlServer1'"
 		},
+		"Update trigger_properties_pipeline6_parameters_filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"Update trigger_properties_pipeline6_parameters_changesDate": {
+			"type": "string",
+			"defaultValue": "@pipeline().TriggerTime"
+		},
+		"Update trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
+		},
 		"deltrig_properties_pipeline2_parameters_fname": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
@@ -99,14 +111,32 @@
 					"AzureSqlDatabase1_connectionString": {
 						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
 					},
-					"SqlServer1_connectionString": {
-						"value": "[parameters('SqlServer1_connectionString')]"
-					},
 					"trigger1_properties_typeProperties_scope": {
 						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
 					},
 					"trigger2_properties_typeProperties_scope": {
 						"value": "[parameters('trigger2_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "tejatuniki_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"SqlServer1_connectionString": {
+						"value": "[parameters('SqlServer1_connectionString')]"
 					},
 					"deltrig_properties_pipeline2_parameters_fname": {
 						"value": "[parameters('deltrig_properties_pipeline2_parameters_fname')]"
@@ -116,6 +146,15 @@
 					},
 					"deltrig_properties_typeProperties_scope": {
 						"value": "[parameters('deltrig_properties_typeProperties_scope')]"
+					},
+					"Update trigger_properties_pipeline6_parameters_filename": {
+						"value": "[parameters('Update trigger_properties_pipeline6_parameters_filename')]"
+					},
+					"Update trigger_properties_pipeline6_parameters_changesDate": {
+						"value": "[parameters('Update trigger_properties_pipeline6_parameters_changesDate')]"
+					},
+					"Update trigger_properties_typeProperties_scope": {
+						"value": "[parameters('Update trigger_properties_typeProperties_scope')]"
 					},
 					"storageevent_properties_pipeline3_parameters_source": {
 						"value": "[parameters('storageevent_properties_pipeline3_parameters_source')]"
@@ -134,7 +173,9 @@
 					}
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'tejatuniki_ArmTemplate_0')]"
+			]
 		}
 	]
 }
