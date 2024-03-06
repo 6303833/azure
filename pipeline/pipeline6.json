@@ -77,7 +77,18 @@
 						"type": "DelimitedTextSource",
 						"additionalColumns": [
 							{
-								"value": ""
+								"name": "SourceFile_name",
+								"value": {
+									"value": "@activity('Get Metadata1').output.itemName",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "Last_Update_Dt",
+								"value": {
+									"value": "@activity('Get Metadata1').output.lastModified",
+									"type": "Expression"
+								}
 							}
 						],
 						"storeSettings": {
@@ -89,11 +100,34 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "DelimitedText6",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable3",
 						"type": "DatasetReference"
 					}
 				]
