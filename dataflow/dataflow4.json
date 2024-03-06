@@ -74,7 +74,7 @@
 				"ModifyColumns1 derive(Years = substring(Years,0,5)) ~> ModifyColumns2",
 				"ModifyColumns2 sort(asc(Years, true),",
 				"     caseInsensitive: true) ~> sort1",
-				"sort1 derive(column1 = ERROR_FUNCTION('')) ~> derivedColumn1",
+				"sort1 derive({} = ERROR_FUNCTION('')) ~> derivedColumn1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['temp.csv'],",
