@@ -89,10 +89,6 @@
 							{
 								"name": "SourceFile_name",
 								"value": "$$FILENAME"
-							},
-							{
-								"name": "Last_Update_Dt",
-								"value": ""
 							}
 						],
 						"storeSettings": {
