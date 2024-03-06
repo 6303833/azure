@@ -6,15 +6,6 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "pipeline3",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"source": "@triggerBody().fileName"
-				}
-			},
-			{
-				"pipelineReference": {
 					"referenceName": "Push_to_SQL",
 					"type": "PipelineReference"
 				},
