@@ -23,26 +23,6 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
 		},
-		"Update trigger_properties_pipeline6_parameters_filename": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
-		"Update trigger_properties_pipeline6_parameters_changesDate": {
-			"type": "string",
-			"defaultValue": "@pipeline().TriggerTime"
-		},
-		"Update trigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
-		},
-		"storageevent_properties_pipeline3_parameters_source": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
-		"storageevent_properties_Push_to_SQL_parameters_source": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
 		"storageevent_properties_pipeline2_parameters_fname": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
@@ -52,6 +32,18 @@
 			"defaultValue": "File Created"
 		},
 		"storageevent_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
+		},
+		"Update trigger_properties_pipeline6_parameters_filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"Update trigger_properties_pipeline6_parameters_changesDate": {
+			"type": "string",
+			"defaultValue": "@pipeline().TriggerTime"
+		},
+		"Update trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
 		}
@@ -401,6 +393,37 @@
 					"scope": "[parameters('deltrig_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobDeleted"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/storageevent')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline2",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"fname": "[parameters('storageevent_properties_pipeline2_parameters_fname')]",
+							"status": "[parameters('storageevent_properties_pipeline2_parameters_status')]"
+						}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/input/blobs/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('storageevent_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
 					]
 				}
 			},
@@ -872,7 +895,6 @@
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/input/blobs/",
-					"blobPathEndsWith": "BroadcastYears.xml",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('Update trigger_properties_typeProperties_scope')]",
 					"events": [
@@ -882,58 +904,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pipeline6')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/storageevent')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline3",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"source": "[parameters('storageevent_properties_pipeline3_parameters_source')]"
-						}
-					},
-					{
-						"pipelineReference": {
-							"referenceName": "Push_to_SQL",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"source": "[parameters('storageevent_properties_Push_to_SQL_parameters_source')]"
-						}
-					},
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline2",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"fname": "[parameters('storageevent_properties_pipeline2_parameters_fname')]",
-							"status": "[parameters('storageevent_properties_pipeline2_parameters_status')]"
-						}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/input/blobs/",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('storageevent_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline3')]",
-				"[concat(variables('factoryId'), '/pipelines/Push_to_SQL')]"
 			]
 		}
 	]
