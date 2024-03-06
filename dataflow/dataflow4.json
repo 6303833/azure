@@ -63,12 +63,12 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
-				"          BroadcastID,",
 				"          Years,",
 				"          Nielsen_StartDate,",
 				"          Nielsen_EndDate,",
 				"          Financial_StartDate,",
-				"          Financial_EndDate",
+				"          Financial_EndDate,",
+				"          Date",
 				"     ),",
 				"     partitionBy('hash', 1)) ~> sink1"
 			]
