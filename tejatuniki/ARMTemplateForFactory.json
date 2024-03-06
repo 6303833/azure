@@ -498,7 +498,7 @@
 							},
 							"staging": {},
 							"compute": {
-								"coreCount": 16,
+								"coreCount": 8,
 								"computeType": "General"
 							},
 							"traceLevel": "Fine"
@@ -573,7 +573,7 @@
 									{
 										"name": "Last_Update_Dt",
 										"value": {
-											"value": "@activity('Get Metadata1').output.lastModified",
+											"value": "@formatDateTime(activity('Get Metadata1').output.lastModified,'yyyy-MM-dd HH:mm')",
 											"type": "Expression"
 										}
 									}
