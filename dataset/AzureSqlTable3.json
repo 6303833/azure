@@ -1,0 +1,52 @@
+{
+	"name": "AzureSqlTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "BroadcastID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Years",
+				"type": "varchar"
+			},
+			{
+				"name": "Nielsen_StartDate",
+				"type": "varchar"
+			},
+			{
+				"name": "Nielsen_EndDate",
+				"type": "varchar"
+			},
+			{
+				"name": "Financial_StartDate",
+				"type": "varchar"
+			},
+			{
+				"name": "Financial_EndDate",
+				"type": "varchar"
+			},
+			{
+				"name": "SourceFile_name",
+				"type": "varchar"
+			},
+			{
+				"name": "Last_Update_Dt",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DimDate_Broadcast_Year"
+		}
+	}
+}
