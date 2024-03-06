@@ -132,7 +132,10 @@
 				"inputs": [
 					{
 						"referenceName": "DelimitedText6",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"fname": "temp"
+						}
 					}
 				],
 				"outputs": [
