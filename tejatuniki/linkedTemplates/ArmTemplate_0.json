@@ -596,12 +596,21 @@
 					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"fname": {
+						"type": "string",
+						"defaultValue": "temp"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "temp.csv",
+						"fileName": {
+							"value": "@dataset().fname",
+							"type": "Expression"
+						},
 						"container": "output"
 					},
 					"columnDelimiter": ",",
