@@ -56,7 +56,7 @@
 				"          Financial_StartDate = toString(Financial_StartDate),",
 				"          Financial_EndDate = toString(Financial_EndDate),",
 				"          Years = substring(Years,1,5),",
-				"          column1 = ERROR_FUNCTION('')) ~> ModifyColumns1",
+				"          Date = currentDate()) ~> ModifyColumns1",
 				"ModifyColumns1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['temp.csv'],",
