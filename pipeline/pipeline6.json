@@ -47,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Xml1",
+						"referenceName": "Binary3",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -58,6 +58,9 @@
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "BinaryReadSettings"
 					}
 				}
 			},
