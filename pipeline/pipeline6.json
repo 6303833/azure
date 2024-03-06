@@ -27,6 +27,14 @@
 				}
 			}
 		],
+		"parameters": {
+			"filename": {
+				"type": "string"
+			},
+			"changesDate": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
