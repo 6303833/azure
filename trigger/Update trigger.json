@@ -18,7 +18,8 @@
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/input/blobs/",
-			"ignoreEmptyBlobs": false,
+			"blobPathEndsWith": "BroadcastYears.xml",
+			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja",
 			"events": [
 				"Microsoft.Storage.BlobCreated"
