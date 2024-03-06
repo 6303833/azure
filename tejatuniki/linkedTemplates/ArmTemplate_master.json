@@ -55,6 +55,14 @@
 			"type": "string",
 			"defaultValue": "File Created"
 		},
+		"storageevent_properties_pipeline6_parameters_filename": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"storageevent_properties_pipeline6_parameters_changesDate": {
+			"type": "string",
+			"defaultValue": "@pipeline().TriggerTime"
+		},
 		"storageevent_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/20114ecf-7366-4964-8f37-014f852b658e/resourceGroups/dtb/providers/Microsoft.Storage/storageAccounts/demostoreteja"
@@ -139,15 +147,6 @@
 					"deltrig_properties_typeProperties_scope": {
 						"value": "[parameters('deltrig_properties_typeProperties_scope')]"
 					},
-					"storageevent_properties_pipeline2_parameters_fname": {
-						"value": "[parameters('storageevent_properties_pipeline2_parameters_fname')]"
-					},
-					"storageevent_properties_pipeline2_parameters_status": {
-						"value": "[parameters('storageevent_properties_pipeline2_parameters_status')]"
-					},
-					"storageevent_properties_typeProperties_scope": {
-						"value": "[parameters('storageevent_properties_typeProperties_scope')]"
-					},
 					"Update trigger_properties_pipeline6_parameters_filename": {
 						"value": "[parameters('Update trigger_properties_pipeline6_parameters_filename')]"
 					},
@@ -156,6 +155,21 @@
 					},
 					"Update trigger_properties_typeProperties_scope": {
 						"value": "[parameters('Update trigger_properties_typeProperties_scope')]"
+					},
+					"storageevent_properties_pipeline2_parameters_fname": {
+						"value": "[parameters('storageevent_properties_pipeline2_parameters_fname')]"
+					},
+					"storageevent_properties_pipeline2_parameters_status": {
+						"value": "[parameters('storageevent_properties_pipeline2_parameters_status')]"
+					},
+					"storageevent_properties_pipeline6_parameters_filename": {
+						"value": "[parameters('storageevent_properties_pipeline6_parameters_filename')]"
+					},
+					"storageevent_properties_pipeline6_parameters_changesDate": {
+						"value": "[parameters('storageevent_properties_pipeline6_parameters_changesDate')]"
+					},
+					"storageevent_properties_typeProperties_scope": {
+						"value": "[parameters('storageevent_properties_typeProperties_scope')]"
 					}
 				}
 			},
