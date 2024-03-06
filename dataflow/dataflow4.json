@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable3",
+						"referenceName": "DelimitedText6",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -68,24 +68,8 @@
 				"ModifyColumns1 derive(Years = substring(Years,0,5)) ~> ModifyColumns2",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          BroadcastID as integer,",
-				"          Years as string,",
-				"          Nielsen_StartDate as string,",
-				"          Nielsen_EndDate as string,",
-				"          Financial_StartDate as string,",
-				"          Financial_EndDate as string,",
-				"          SourceFile_name as string,",
-				"          Last_Update_Dt as timestamp",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          BroadcastID,",
 				"          Years,",
