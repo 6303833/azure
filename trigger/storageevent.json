@@ -13,6 +13,16 @@
 					"fname": "@triggerBody().fileName",
 					"status": "File Created"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline6",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"filename": "@triggerBody().fileName",
+					"changesDate": "@pipeline().TriggerTime"
+				}
 			}
 		],
 		"type": "BlobEventsTrigger",
