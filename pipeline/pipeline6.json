@@ -17,12 +17,7 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "dataflow4",
-						"type": "DataFlowReference",
-						"datasetParameters": {
-							"sink1": {
-								"fname": "temp"
-							}
-						}
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 16,
@@ -61,7 +56,6 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
-						"recursive": true,
 						"enablePartitionDiscovery": false
 					}
 				}
