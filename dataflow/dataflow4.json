@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "DelimitedText6",
+						"referenceName": "AzureSqlTable3",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -59,16 +59,31 @@
 				"          Date = currentDate()) ~> ModifyColumns1",
 				"ModifyColumns1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['temp.csv'],",
+				"     input(",
+				"          BroadcastID as integer,",
+				"          Years as string,",
+				"          Nielsen_StartDate as string,",
+				"          Nielsen_EndDate as string,",
+				"          Financial_StartDate as string,",
+				"          Financial_EndDate as string,",
+				"          SourceFile_name as string,",
+				"          Last_Update_Dt as timestamp",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          Years,",
 				"          Nielsen_StartDate,",
 				"          Nielsen_EndDate,",
 				"          Financial_StartDate,",
 				"          Financial_EndDate,",
-				"          Date",
+				"          Last_Update_Dt = Date",
 				"     ),",
 				"     partitionBy('hash', 1)) ~> sink1"
 			]
