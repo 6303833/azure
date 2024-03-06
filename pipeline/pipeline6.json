@@ -56,6 +56,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					}
 				}
@@ -132,10 +133,7 @@
 				"inputs": [
 					{
 						"referenceName": "DelimitedText6",
-						"type": "DatasetReference",
-						"parameters": {
-							"fname": "temp"
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
