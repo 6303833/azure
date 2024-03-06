@@ -109,16 +109,15 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "upsert",
-						"upsertSettings": {
-							"useTempDB": true,
-							"keys": [
-								"BroadcastID"
-							]
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
 						},
-						"sqlWriterUseTableLock": false,
-						"disableMetricsCollection": false
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
 					},
 					"enableStaging": false,
 					"translator": {
@@ -138,7 +137,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTable3",
+						"referenceName": "DelimitedText8",
 						"type": "DatasetReference"
 					}
 				]
