@@ -898,7 +898,7 @@
 								"upsertSettings": {
 									"useTempDB": true,
 									"keys": [
-										"Years"
+										"BroadcastID"
 									]
 								},
 								"sqlWriterUseTableLock": false,
