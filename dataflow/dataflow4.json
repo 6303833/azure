@@ -68,6 +68,7 @@
 				"ModifyColumns1 derive(Years = substring(Years,0,5)) ~> ModifyColumns2",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:[''],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     mapColumn(",
@@ -77,7 +78,8 @@
 				"          Nielsen_EndDate,",
 				"          Financial_StartDate,",
 				"          Financial_EndDate",
-				"     )) ~> sink1"
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}
