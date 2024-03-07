@@ -26,6 +26,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable4",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
 				}
 			],
 			"transformations": [
@@ -55,14 +62,14 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source2",
 				"source(output(",
-				"          id as string,",
+				"          id as integer,",
 				"          name as string,",
-				"          age as string",
+				"          age as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source3",
-				"source2 exists(source2@id == source1@id,",
+				"source2, derivedColumn3 exists(source2@id == source1@id,",
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists1",
 				"derivedColumn2 alterRow(updateIf(true())) ~> alterRow1",
@@ -92,7 +99,30 @@
 				"          name,",
 				"          age,",
 				"          active",
-				"     )) ~> sink1"
+				"     )) ~> sink1",
+				"derivedColumn3 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          brodId as integer,",
+				"          id as integer,",
+				"          name as string,",
+				"          age as integer,",
+				"          active as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          id,",
+				"          name,",
+				"          age,",
+				"          active",
+				"     )) ~> sink2"
 			]
 		}
 	}
