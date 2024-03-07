@@ -56,7 +56,7 @@
 				"          Financial_StartDate = toString(Financial_StartDate),",
 				"          Financial_EndDate = toString(Financial_EndDate),",
 				"          Years = substring(Years,1,5),",
-				"          Date = currentDate()) ~> ModifyColumns1",
+				"          Update = currentDate()) ~> ModifyColumns1",
 				"ModifyColumns1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -83,7 +83,7 @@
 				"          Nielsen_EndDate,",
 				"          Financial_StartDate,",
 				"          Financial_EndDate,",
-				"          Last_Update_Dt = Date",
+				"          Last_Update_Dt = Update",
 				"     ),",
 				"     partitionBy('hash', 1)) ~> sink1"
 			]
