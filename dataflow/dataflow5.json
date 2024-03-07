@@ -69,7 +69,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source3",
-				"source2, derivedColumn3 exists(source2@id==source3@id,",
+				"source2, derivedColumn3 exists(source2@id == source3@id,",
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists1",
 				"derivedColumn2 alterRow(updateIf(true())) ~> alterRow1",
