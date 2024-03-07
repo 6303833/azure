@@ -74,7 +74,7 @@
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists1",
 				"derivedColumn2 alterRow(upsertIf(true())) ~> alterRow1",
-				"exists1 derive(active = 0) ~> derivedColumn2",
+				"exists1 derive(active = 0 ) ~> derivedColumn2",
 				"alterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
