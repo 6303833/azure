@@ -23,6 +23,9 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "exists1"
 				}
 			],
 			"scriptLines": [
@@ -45,7 +48,10 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source2",
-				"source1 derive(active = 1) ~> derivedColumn1"
+				"source1 derive(active = 1) ~> derivedColumn1",
+				"derivedColumn1 exists(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     negate:false,",
+				"     broadcast: 'auto')~> exists1"
 			]
 		}
 	}
