@@ -1764,7 +1764,10 @@
 						"     format: 'table',",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
-						"     errorHandlingOption: 'stopOnFirstError') ~> sink1",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          active",
+						"     )) ~> sink1",
 						"AlterRow2 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     input(",
@@ -1781,7 +1784,13 @@
 						"     format: 'table',",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
-						"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          id,",
+						"          name,",
+						"          age,",
+						"          active",
+						"     )) ~> sink2"
 					]
 				}
 			},
