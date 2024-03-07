@@ -26,6 +26,9 @@
 				},
 				{
 					"name": "exists1"
+				},
+				{
+					"name": "alterRow1"
 				}
 			],
 			"scriptLines": [
@@ -51,7 +54,8 @@
 				"source1 derive(active = 1) ~> derivedColumn1",
 				"source2, derivedColumn1 exists(source2@id == source1@id,",
 				"     negate:false,",
-				"     broadcast: 'auto')~> exists1"
+				"     broadcast: 'auto')~> exists1",
+				"exists1 alterRow(updateIf(1==1)) ~> alterRow1"
 			]
 		}
 	}
