@@ -12,6 +12,10 @@
 					"name": "source1"
 				},
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTable3",
+						"type": "DatasetReference"
+					},
 					"name": "source2"
 				}
 			],
@@ -26,8 +30,20 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source2"
+				"source(output(",
+				"          BroadcastID as integer,",
+				"          Years as string,",
+				"          Nielsen_StartDate as string,",
+				"          Nielsen_EndDate as string,",
+				"          Financial_StartDate as string,",
+				"          Financial_EndDate as string,",
+				"          SourceFile_name as string,",
+				"          Last_Update_Dt as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source2"
 			]
 		}
 	}
