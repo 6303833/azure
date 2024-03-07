@@ -353,7 +353,7 @@
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "DimDate_Broadcast_Year"
+					"table": "emp"
 				}
 			},
 			"dependsOn": [
