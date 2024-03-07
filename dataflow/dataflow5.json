@@ -49,7 +49,7 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source2",
 				"source1 derive(active = 1) ~> derivedColumn1",
-				"derivedColumn1, source2 exists(source1@id == id,",
+				"source1, derivedColumn1 exists(source1@id == source2@id,",
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists1"
 			]
