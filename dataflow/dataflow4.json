@@ -60,7 +60,7 @@
 				"          Financial_EndDate = toString(Financial_EndDate),",
 				"          Years = substring(Years,1,5),",
 				"          Update = currentDate()) ~> ModifyColumns1",
-				"ModifyColumns1 alterRow() ~> AlterRow1",
+				"ModifyColumns1 alterRow(upsertIf(1==1)) ~> AlterRow1",
 				"AlterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
