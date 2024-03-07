@@ -46,7 +46,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "emp"
+			"table": "DimDate_Broadcast_Year"
 		}
 	}
 }
