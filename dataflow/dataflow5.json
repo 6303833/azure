@@ -73,7 +73,7 @@
 				"source2, derivedColumn1 exists(source2@id == source1@id,",
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists1",
-				"derivedColumn2 alterRow(upsertIf(true())) ~> alterRow1",
+				"derivedColumn2 alterRow(updateIf(true())) ~> alterRow1",
 				"exists1 derive(active = 0 ) ~> derivedColumn2",
 				"alterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
