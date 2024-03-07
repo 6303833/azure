@@ -47,9 +47,6 @@
 				},
 				{
 					"name": "derivedColumn2"
-				},
-				{
-					"name": "AlterRow2"
 				}
 			],
 			"scriptLines": [
@@ -78,7 +75,6 @@
 				"     broadcast: 'auto')~> exists1",
 				"derivedColumn2 alterRow(updateIf(1==1)) ~> alterRow1",
 				"exists1 derive(active = 0) ~> derivedColumn2",
-				"derivedColumn1 alterRow(upsertIf(1==1)) ~> AlterRow2",
 				"alterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -99,7 +95,7 @@
 				"     mapColumn(",
 				"          active",
 				"     )) ~> sink1",
-				"AlterRow2 sink(allowSchemaDrift: true,",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          brodId as integer,",
