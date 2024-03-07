@@ -149,8 +149,8 @@
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"source1": {},
 									"source2": {},
+									"source3": {},
 									"sink1": {},
 									"sink2": {}
 								}
@@ -1675,17 +1675,17 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "emppfile",
-								"type": "DatasetReference"
-							},
-							"name": "source1"
-						},
-						{
-							"dataset": {
 								"referenceName": "AzureSqlTable4",
 								"type": "DatasetReference"
 							},
 							"name": "source2"
+						},
+						{
+							"dataset": {
+								"referenceName": "emppfile",
+								"type": "DatasetReference"
+							},
+							"name": "source3"
 						}
 					],
 					"sinks": [
@@ -1706,9 +1706,6 @@
 					],
 					"transformations": [
 						{
-							"name": "derivedColumn1"
-						},
-						{
 							"name": "exists1"
 						},
 						{
@@ -1716,17 +1713,12 @@
 						},
 						{
 							"name": "derivedColumn2"
+						},
+						{
+							"name": "derivedColumn3"
 						}
 					],
 					"scriptLines": [
-						"source(output(",
-						"          id as integer,",
-						"          name as string,",
-						"          age as integer",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     ignoreNoFilesFound: false) ~> source1",
 						"source(output(",
 						"          brodId as integer,",
 						"          id as integer,",
@@ -1738,12 +1730,20 @@
 						"     validateSchema: false,",
 						"     isolationLevel: 'READ_UNCOMMITTED',",
 						"     format: 'table') ~> source2",
-						"source1 derive(active = 1) ~> derivedColumn1",
-						"source2, derivedColumn1 exists(source2@id == source1@id,",
+						"source(output(",
+						"          id as integer,",
+						"          name as string,",
+						"          age as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> source3",
+						"source2, derivedColumn3 exists(source2@id == source3@id,",
 						"     negate:false,",
 						"     broadcast: 'auto')~> exists1",
-						"derivedColumn2 alterRow(upsertIf(true())) ~> alterRow1",
-						"exists1 derive(active = 0) ~> derivedColumn2",
+						"derivedColumn2 alterRow(updateIf(true())) ~> alterRow1",
+						"exists1 derive(active = 0 ) ~> derivedColumn2",
+						"source3 derive(active = 1) ~> derivedColumn3",
 						"alterRow1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     input(",
@@ -1769,7 +1769,7 @@
 						"          age,",
 						"          active",
 						"     )) ~> sink1",
-						"derivedColumn1 sink(allowSchemaDrift: true,",
+						"derivedColumn3 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     input(",
 						"          brodId as integer,",
@@ -1796,8 +1796,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/emppfile')]",
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable4')]"
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable4')]",
+				"[concat(variables('factoryId'), '/datasets/emppfile')]"
 			]
 		}
 	]
