@@ -6,17 +6,17 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "emppfile",
-						"type": "DatasetReference"
-					},
-					"name": "source1"
-				},
-				{
-					"dataset": {
 						"referenceName": "AzureSqlTable4",
 						"type": "DatasetReference"
 					},
 					"name": "source2"
+				},
+				{
+					"dataset": {
+						"referenceName": "emppfile",
+						"type": "DatasetReference"
+					},
+					"name": "source3"
 				}
 			],
 			"sinks": [
@@ -26,19 +26,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
-				},
-				{
-					"dataset": {
-						"referenceName": "AzureSqlTable4",
-						"type": "DatasetReference"
-					},
-					"name": "sink2"
 				}
 			],
 			"transformations": [
-				{
-					"name": "derivedColumn1"
-				},
 				{
 					"name": "exists1"
 				},
@@ -47,17 +37,12 @@
 				},
 				{
 					"name": "derivedColumn2"
+				},
+				{
+					"name": "derivedColumn3"
 				}
 			],
 			"scriptLines": [
-				"source(output(",
-				"          id as integer,",
-				"          name as string,",
-				"          age as integer",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
 				"source(output(",
 				"          brodId as integer,",
 				"          id as integer,",
@@ -69,12 +54,20 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source2",
-				"source1 derive(active = 1) ~> derivedColumn1",
-				"source2, derivedColumn1 exists(source2@id == source1@id,",
+				"source(output(",
+				"          id as string,",
+				"          name as string,",
+				"          age as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source3",
+				"source2 exists(source2@id == source1@id,",
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists1",
 				"derivedColumn2 alterRow(updateIf(true())) ~> alterRow1",
 				"exists1 derive(active = 0 ) ~> derivedColumn2",
+				"source3 derive(active = 1) ~> derivedColumn3",
 				"alterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -99,30 +92,7 @@
 				"          name,",
 				"          age,",
 				"          active",
-				"     )) ~> sink1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     input(",
-				"          brodId as integer,",
-				"          id as integer,",
-				"          name as string,",
-				"          age as integer,",
-				"          active as integer",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     mapColumn(",
-				"          id,",
-				"          name,",
-				"          age,",
-				"          active",
-				"     )) ~> sink2"
+				"     )) ~> sink1"
 			]
 		}
 	}
