@@ -19,7 +19,22 @@
 					"name": "source2"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable4",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable4",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -58,8 +73,42 @@
 				"source2, derivedColumn1 exists(source2@id == source1@id,",
 				"     negate:false,",
 				"     broadcast: 'auto')~> exists1",
-				"exists1 alterRow(updateIf(1==1)) ~> alterRow1",
-				"alterRow1 derive() ~> derivedColumn2"
+				"derivedColumn2 alterRow(updateIf(1==1)) ~> alterRow1",
+				"exists1 derive(active = 0) ~> derivedColumn2",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          brodId as integer,",
+				"          id as integer,",
+				"          name as string,",
+				"          age as integer,",
+				"          active as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          brodId as integer,",
+				"          id as integer,",
+				"          name as string,",
+				"          age as integer,",
+				"          active as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
 			]
 		}
 	}
